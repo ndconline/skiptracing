@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style type="text/css">
+.red {
+	color: #F00;
+}
+</style>
+</head>
+<body onload="initialize('φ','λ','','','' ,'en' )">
+</font><br>
+	
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;language=en" charset="UTF-8"></script>
+    </a>
+<script src="js/googleMap.js"></script>
+<form method='post' class=fm>
+	<p>
+	<input type='text' name='place' id='place' value=''  onKeyPress='return submitCheck(event);' >
+	<font size=-1>
+	<input type='button' value='Address Search' onclick='placeToMap();'>
+	</font><br>
+	</p>
+	<p>First enter the address or somewhere close to the address you are looking for. Then click the mouse on the exact location you would like the Latitude and Longitude for. You can use the mouse wheel to zoom in and out of the map and click and drag the map to move around.</p>
+	<p>For more detailed view click on Satellite so you can see the location with more accuracy.</p>
+	<p>&nbsp;</p>
+</form>
+
+<script type="text/javascript">
+
+function submitCheck(e){
+    if (!e) var e = window.event;
+    if(e.keyCode == 13){
+		placeToMap();
+        return false;
+
+    }
+}
+
+</script>
+
+
+
+<div id="map_canvas"></div>
+<style>
+	html {height: 100%;font-size:90%;}
+	body { 
+	    height: 100%;
+	    margin: 0;
+	    padding: 0;
+	    margin-left:5px;
+	}
+	
+	#map_canvas {
+	    width: 80%;
+	    height: 40%;;
+	}
+	
+	#place{width:45%; margin-bottom:5px; }
+	.fm{padding:10px;}
+	.idokeido{border:1px #b0bec9 solid;}
+	.idokeido td{border:1px #b0bec9 solid;font-size:95%;}
+	.kyoribtn{ margin:0;padding:0;}
+</style>
+<table  border=0 cellpadding=3 cellspacing=0>
+<tr>
+<td valign=top>
+
+	<table border=0 cellpadding1 cellspacing=0 class='idokeido'>
+	<tr>
+	<td nowrap align=left class='idokeido'> Latitude</td>
+	<td nowrap width=140 class='idokeido_value'><font color=red id="show_y"></font></td>
+	</tr>
+	<tr>
+	<td nowrap align=left class='idokeido'> Longitude</td>
+	<td nowrap width=140><font color=red id="show_x"></font></td>
+	</tr>
+
+	</table>
+</td>
+</tr>
+<tr>
+<td valign=middle>&nbsp;</td>
+</tr>
+</table>
+<br>
+<p>
+  <script type="text/javascript">
+function dotwgps(lat, long, distance) {
+window.open('https://twitter.com/search?q=geocode%3A' + lat + '%2C' + long + '%2C' + distance + 'km&src=typd', 'twitterwindow');
+}
+
+          </script> 
+  Search Tweets in the area!
+</p>
+<p>Copy and paste the Long and Lat from above, add a distance of at least .01 (10 meters). <strong class="red">Ensure the - sign is included when you copy and paste!</strong></p>
+<form onsubmit="dotwgps(this.lat.value, this.long.value, this.distance.value); return false;">
+  <input type="text" name="lat" size="15" placeholder="GPS LAT" />
+              <input type="text" name="long" size="15" placeholder="GPS LONG" />
+              <input type="text" name="distance" size="15" placeholder="Distance" />
+              <input type="submit" value="Search"/>
+              <br />
+</form> 
+
+  
+  <p>&nbsp;</p>
+  <p>
+    
+    <!--   google Analytics    -->
+    <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+  </p>
+  </p>
+<p>&nbsp;</p>
+<table>
+  <caption>
+    Degree precision versus length
+  </caption>
+  <tbody>
+    <tr>
+      <th>decimal<br>
+        places</th>
+      <th>decimal<br>
+        degrees</th>
+      <th>DMS</th>
+      <th>qualitative scale that can be identified</th>
+      <th>N/S or<br>
+        E/W at equator</th>
+      <th>E/W at<br>
+        23N/S</th>
+      <th>E/W at<br>
+        45N/S</th>
+      <th>E/W at<br>
+        67N/S</th>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1° 00′ 0″</td>
+      <td>country or large region</td>
+      <td>111.32 km</td>
+      <td>102.47 km</td>
+      <td>78.71 km</td>
+      <td>43.496 km</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.1</td>
+      <td>0° 06′ 0″</td>
+      <td>large city or district</td>
+      <td>11.132 km</td>
+      <td>10.247 km</td>
+      <td>7.871 km</td>
+      <td>4.3496 km</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.01</td>
+      <td>0° 00′ 36″</td>
+      <td>town or village</td>
+      <td>1.1132 km</td>
+      <td>1.0247 km</td>
+      <td>787.1 m</td>
+      <td>434.96 m</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.001</td>
+      <td>0° 00′ 3.6″</td>
+      <td>neighborhood, street</td>
+      <td>111.32 m</td>
+      <td>102.47 m</td>
+      <td>78.71 m</td>
+      <td>43.496 m</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0001</td>
+      <td>0° 00′ 0.36″</td>
+      <td>individual street, land parcel</td>
+      <td>11.132 m</td>
+      <td>10.247 m</td>
+      <td>7.871 m</td>
+      <td>4.3496 m</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.00001</td>
+      <td>0° 00′ 0.036″</td>
+      <td>individual trees</td>
+      <td>1.1132 m</td>
+      <td>1.0247 m</td>
+      <td>787.1 mm</td>
+      <td>434.96 mm</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.000001</td>
+      <td>0° 00′ 0.0036″</td>
+      <td>individual humans</td>
+      <td>111.32 mm</td>
+      <td>102.47 mm</td>
+      <td>78.71 mm</td>
+      <td>43.496 mm</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.0000001</td>
+      <td>0° 00′ 0.00036″</td>
+      <td>practical limit of commercial surveying</td>
+      <td>11.132 mm</td>
+      <td>10.247 mm</td>
+      <td>7.871 mm</td>
+      <td>4.3496 mm</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.00000001</td>
+      <td>0° 00′ 0.000036″</td>
+      <td>specialized surveying (e.g. <a href="https://en.wikipedia.org/wiki/Tectonic_plate" title="Tectonic plate">tectonic plate</a> mapping)</td>
+      <td>1.1132 mm</td>
+      <td>1.0247 mm</td>
+      <td>787.1 µm</td>
+      <td>434.96 µm</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+
+<script type="text/javascript">
+try {
+  var pageTracker = _gat._getTracker('UA-10568967-1');
+  pageTracker._trackPageview();
+} catch(err) {}
+</script>
+</body>
+
+
+</html>
+
