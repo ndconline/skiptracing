@@ -1,0 +1,87 @@
+
+Company and Job Title only search:
+<br/>
+<script type="text/javascript">
+function work1(w1, w2) {
+window.open('https://www.facebook.com/search/str/' + w1 + '/pages-named/employees/present/intersect/str/' + w2 + '/pages-named/employees/present/intersect', 'work1window');
+}
+
+                </script>
+</p>
+<form onSubmit="work1(this.w1.value, this.w2.value); return false;">
+  <input type="text" name="w1" size="20" placeholder="Company Name" />(Enter Company Name)<br/>
+  <input type="text" name="w2" size="20" placeholder="Job Title e.g Manager" />(Enter Job Title)<br/>
+
+  <input type="submit" value="Search"/>
+                        <br />
+</form>
+
+<br />
+
+<p>Search by employer, job title and year born. <br/>  
+  
+  
+  <script type="text/javascript">
+function work3(m1, m2, m3) {
+window.open('https://www.facebook.com/search/str/' + m1 + '/pages-named/employees/present/intersect/str/' + m2 + '/pages-named/employees/present/intersect/str/' + m3 +'/date/users-born/intersect', 'work2window');
+}
+
+                </script>
+</p>
+<form onSubmit="work3(this.m1.value, this.m2.value, this.m3.value); return false;">
+  <input type="text" name="m1" size="20" placeholder="Company Name" />(Enter Company Name)<br/>
+  <input type="text" name="m2" size="20" placeholder="Job Title e.g Manager" />(Enter Job Title)<br/>
+                        <input type="text" name="m3" size="20" placeholder="Year Born" />(Enter Birth Year)<br />
+  <input type="submit" value="Search"/>
+                        <br />
+</form>
+
+<!--- Resident searches-->
+Search for Current Residents:
+ <script type="text/javascript">
+function res1(r1) {
+window.open('https://www.facebook.com/search/str/' + r1 + '/pages-named/residents/present/intersect', 'res1window');
+}
+
+                </script>
+                      <form onSubmit="res1(this.r1.value); return false;">
+                        <input type="text" name="r1" size="50" placeholder="Enter Suburb" />
+                        <input type="submit" value="Search"/>
+                        <br />
+                    </form>
+                     <br />
+<!-- past residents -->                
+Search for Past Residents:	
+			  
+				  <script type="text/javascript">
+function res2(r2) {
+window.open('https://www.facebook.com/search/str/' + r2 + '/pages-named/residents/past/intersect', 'res2window');
+}
+
+                </script>
+                      <form onSubmit="res2(this.r2.value); return false;">
+                        <input type="text" name="r2" size="50" placeholder="Enter Suburb" />
+                        <input type="submit" value="Search"/>
+                        <br />
+                    </form>
+<!-- past residents --> 
+   <br />
+   
+Search School: 
+
+<script type="text/javascript">
+function school1(sc1, sc2) {
+window.open('https://www.facebook.com/search/str/' + sc1 + '/users-named/intersect/str/' + sc2 + '/pages-named/students/intersect', 'school1window');
+}
+
+                </script>
+</p>
+<form onSubmit="school1(this.sc1.value, this.sc2.value); return false;">
+  <input type="text" name="sc1" size="20" placeholder="Name" />(Enter Name)<br/>
+  <input type="text" name="sc2" size="20" placeholder="School" />(Enter School)<br/>
+
+  <input type="submit" value="Search"/>
+                        <br />
+</form>
+
+   <br />
